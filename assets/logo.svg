@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Shama Brothers</title>
+  <rect width="100" height="100" rx="12" fill="#e74c3c" />
+  <g transform="translate(16,22)" fill="#fff">
+    <text x="0" y="32" font-family="Cinzel, serif" font-weight="700" font-size="28">SB</text>
+  </g>
+</svg>

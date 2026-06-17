@@ -1,0 +1,160 @@
+// Main interactive behaviors: sticky nav, mobile toggle, particles, scroll animations
+(function(){
+  const navbar = document.getElementById('navbar');
+  const scrollBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+      scrollBtn.classList.add('visible');
+    } else {
+      navbar.classList.remove('scrolled');
+      scrollBtn.classList.remove('visible');
+    }
+  });
+  if (scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  const ham = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('nav-mobile');
+  if (ham && mobileNav) {
+    ham.addEventListener('click', () => {
+      ham.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }));
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // particles
+  const container = document.getElementById('particles');
+  if (container) {
+    const colors = ['#c0392b','#e74c3c','#f39c12','#e67e22','#ff6b35'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        width: ${size}px;
+        height: ${size * 3}px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        --dur: ${Math.random() * 6 + 5}s;
+        --delay: ${Math.random() * 8}s;
+      `;
+      container.appendChild(p);
+    }
+  }
+
+  // set current year in footer
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Menu Search and Filter Functionality
+  const menuSearch = document.getElementById('menuSearch');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const dishCards = document.querySelectorAll('.dish-card');
+  const noResults = document.getElementById('noResults');
+  const searchResults = document.getElementById('searchResults');
+  let currentCategory = 'all';
+
+  function filterMenu() {
+    let visibleCount = 0;
+    
+    dishCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+      const searchText = menuSearch.value.toLowerCase();
+      const cardName = card.getAttribute('data-name').toLowerCase();
+      const cardSearchTerms = card.getAttribute('data-search').toLowerCase();
+
+      // Check category filter
+      const categoryMatch = currentCategory === 'all' || cardCategory === currentCategory;
+      
+      // Check search filter
+      const searchMatch = !searchText || cardName.includes(searchText) || cardSearchTerms.includes(searchText);
+
+      if (categoryMatch && searchMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Show/hide no results message
+    if (visibleCount === 0) {
+      noResults.style.display = 'block';
+    } else {
+      noResults.style.display = 'none';
+    }
+
+    // Hide search results dropdown when menu is filtered
+    searchResults.classList.remove('show');
+  }
+
+  // Search functionality with live preview
+  if (menuSearch) {
+    menuSearch.addEventListener('input', (e) => {
+      const searchText = e.target.value.toLowerCase().trim();
+
+      if (searchText.length > 0) {
+        const matches = [];
+        dishCards.forEach(card => {
+          const cardName = card.getAttribute('data-name');
+          const cardSearchTerms = card.getAttribute('data-search');
+          if (cardName.toLowerCase().includes(searchText) || cardSearchTerms.toLowerCase().includes(searchText)) {
+            matches.push(cardName);
+          }
+        });
+
+        if (matches.length > 0) {
+          searchResults.innerHTML = matches
+            .slice(0, 5)
+            .map(match => `<div class="search-result-item">${match}</div>`)
+            .join('');
+          searchResults.classList.add('show');
+        } else {
+          searchResults.innerHTML = '<div class="search-result-item">No items found</div>';
+          searchResults.classList.add('show');
+        }
+      } else {
+        searchResults.classList.remove('show');
+      }
+
+      filterMenu();
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.menu-search-wrapper')) {
+        searchResults.classList.remove('show');
+      }
+    });
+  }
+
+  // Category filter buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Update current category
+      currentCategory = btn.getAttribute('data-category');
+      
+      // Clear search and hide search results
+      if (menuSearch) {
+        menuSearch.value = '';
+        searchResults.classList.remove('show');
+      }
+      
+      // Apply filter
+      filterMenu();
+    });
+  });
+})();

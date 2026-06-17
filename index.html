@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shama Brothers BBQ – Hyderabad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Raleway:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🕯️</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-en">Shama Brothers</span>
+        <span class="nav-logo-ur">شمع برادرز</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#featured">Menu</a>
+      <a href="#why">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#footer">Contact</a>
+      <a href="#featured" class="btn btn-primary">Order Now</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#home">Home</a>
+  <a href="#featured">Menu</a>
+  <a href="#why">About</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#footer">Contact</a>
+  <a href="#featured" class="btn btn-primary" style="text-align:center">Order Now</a>
+</div>
+
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow fade-up">
+          <div class="hero-eyebrow-line"></div>
+          <span>Hyderabad's Finest BBQ Since 1995</span>
+        </div>
+        <h1 class="hero-title fade-up fade-up-delay-1">
+          Flame-Kissed<br/>
+          <span class="fire">BBQ</span> <span class="gold">Mastery</span>
+        </h1>
+        <p class="hero-subtitle fade-up fade-up-delay-2">
+          From our open-fire grills in Hyderabad, Sindh — experience authentic desi BBQ crafted with secret spice blends passed down through generations of the Shama family.
+        </p>
+        <div class="hero-cta fade-up fade-up-delay-3">
+          <a href="#featured" class="btn btn-primary">🔥 Explore Menu</a>
+          <a href="#why" class="btn btn-outline">Our Story</a>
+        </div>
+        <div class="hero-stats fade-up fade-up-delay-4">
+          <div>
+            <div class="hero-stat-num">30+</div>
+            <div class="hero-stat-label">Years of Smoke</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">50K+</div>
+            <div class="hero-stat-label">Happy Guests</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">40+</div>
+            <div class="hero-stat-label">BBQ Specialties</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual fade-up fade-up-delay-2">
+        <div class="hero-plate">
+          <div class="hero-plate-inner">🍖</div>
+          <div class="hero-badge">
+            <div class="hero-badge-inner">
+              <div class="hero-badge-num">★</div>
+              <div>Top Rated</div>
+              <div>Hyderabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="menu" id="featured">
+  <div class="container">
+    <div class="menu-header fade-up">
+      <span class="section-label">Straight Off the Grill</span>
+      <h2 class="section-title">Our Complete <span>Menu</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="menu-search-wrapper fade-up fade-up-delay-1">
+      <div class="menu-search">
+        <input type="text" id="menuSearch" class="menu-search-input" placeholder="Search menu items...">
+        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20">
+          <circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="14" y1="14" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="menu-filters fade-up fade-up-delay-2">
+      <button class="filter-btn active" data-category="all">All Items</button>
+      <button class="filter-btn" data-category="bbq">🔥 BBQ</button>
+      <button class="filter-btn" data-category="kebab">🍢 Kebab</button>
+      <button class="filter-btn" data-category="seafood">🦐 Seafood</button>
+      <button class="filter-btn" data-category="rice">🍚 Rice & Biryani</button>
+      <button class="filter-btn" data-category="drinks">🥤 Drinks</button>
+      <button class="filter-btn" data-category="desserts">🍰 Desserts</button>
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="dishes-grid" id="menugrid">
+      <!-- BBQ Category -->
+      <div class="dish-card fade-up fade-up-delay-1" data-category="bbq" data-name="Shama Special Chicken BBQ" data-search="chicken bbq grilled marinated">
+        <div class="dish-emoji">🍗<div class="dish-tag">Best Seller</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Shama Special Chicken BBQ</div>
+          <div class="dish-category">BBQ</div>
+          <div class="dish-desc">Whole chicken marinated overnight in our signature spice blend, slow-grilled over charcoal until perfectly charred.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 1,200 <span>/ full</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-2" data-category="bbq" data-name="Mutton BBQ" data-search="mutton bbq grilled meat">
+        <div class="dish-emoji">🥩<div class="dish-tag">Chef's Pick</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Mutton BBQ Platter</div>
+          <div class="dish-category">BBQ</div>
+          <div class="dish-desc">Premium mutton pieces grilled to perfection with our special spice blend, charred edges with juicy tender meat.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 1,100 <span>/ platter</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="bbq" data-name="Fish BBQ" data-search="fish bbq grilled seafood">
+        <div class="dish-emoji">🐟<div class="dish-tag">Signature</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Fish BBQ</div>
+          <div class="dish-category">BBQ</div>
+          <div class="dish-desc">Whole fresh river fish marinated in spices and grilled on charcoal, crispy skin with moist flaky meat inside.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 950 <span>/ piece</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kebab Category -->
+      <div class="dish-card fade-up fade-up-delay-1" data-category="kebab" data-name="Seekh Kebab" data-search="seekh kebab minced beef grilled">
+        <div class="dish-emoji">🍢<div class="dish-tag">Classic</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Seekh Kebab Platter</div>
+          <div class="dish-category">Kebab</div>
+          <div class="dish-desc">Hand-minced beef mixed with fresh herbs and secret spices, shaped on iron seekhs and grilled to juicy perfection.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 850 <span>/ platter</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-2" data-category="kebab" data-name="Boti Bun Kebab" data-search="boti kebab mutton bun">
+        <div class="dish-emoji">🌮<div class="dish-tag">New</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Boti Bun Kebab</div>
+          <div class="dish-category">Kebab</div>
+          <div class="dish-desc">Tender mutton boti pieces with caramelized onions, green chutney and raita wrapped in a soft toasted bun.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 350 <span>/ piece</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="kebab" data-name="Galauti Kebab" data-search="galauti kebab melt-in-mouth soft">
+        <div class="dish-emoji">🍖<div class="dish-tag">Premium</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Galauti Kebab</div>
+          <div class="dish-category">Kebab</div>
+          <div class="dish-desc">Legendary Hyderabadi kebab so soft it melts on your tongue — minced mutton with 160 spices, a royal recipe.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 650 <span>/ 4 pieces</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-1" data-category="kebab" data-name="Kapura & Kaleji BBQ" data-search="kapura kaleji kidney liver grilled">
+        <div class="dish-emoji">🫀<div class="dish-tag">Street Classic</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Kapura & Kaleji BBQ</div>
+          <div class="dish-category">Kebab</div>
+          <div class="dish-desc">Hyderabadi classic — grilled lamb kidney and liver with green chilli and lemon, a street-food legend.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 600 <span>/ portion</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seafood Category -->
+      <div class="dish-card fade-up fade-up-delay-2" data-category="seafood" data-name="Tandoori Jhinga" data-search="tandoori prawns jhinga seafood">
+        <div class="dish-emoji">🦐<div class="dish-tag">Favorite</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Tandoori Jhinga</div>
+          <div class="dish-category">Seafood</div>
+          <div class="dish-desc">Fresh river prawns marinated in yogurt and spices, cooked in our clay tandoor for a smoky coastal flavor.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 1,500 <span>/ dozen</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="seafood" data-name="Grilled Crab" data-search="crab grilled seafood bbq">
+        <div class="dish-emoji">🦀<div class="dish-tag">Premium</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Grilled Crab Platter</div>
+          <div class="dish-category">Seafood</div>
+          <div class="dish-desc">Fresh crab halves marinated in our spice blend and grilled over charcoal, served with garlic butter and lemon.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 1,800 <span>/ pair</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rice & Biryani Category -->
+      <div class="dish-card fade-up fade-up-delay-1" data-category="rice" data-name="Biryani with Raita" data-search="biryani rice mutton fragrant">
+        <div class="dish-emoji">🍚<div class="dish-tag">Popular</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Biryani with Raita</div>
+          <div class="dish-category">Rice & Biryani</div>
+          <div class="dish-desc">Fragrant long-grain rice slow-cooked with our BBQ mutton, whole spices, fried onions and saffron.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 550 <span>/ plate</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-2" data-category="rice" data-name="Chicken Biryani" data-search="chicken biryani rice fragrant">
+        <div class="dish-emoji">🍗<div class="dish-tag">Family Favorite</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Chicken Biryani</div>
+          <div class="dish-category">Rice & Biryani</div>
+          <div class="dish-desc">Aromatic basmati rice layered with tender chicken pieces, cooked with saffron, ghee, and Hyderabadi spices.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 450 <span>/ plate</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="rice" data-name="Mixed Grill Rice" data-search="mixed grill rice bbq platter">
+        <div class="dish-emoji">🍛<div class="dish-tag">Chef Special</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Mixed Grill Fried Rice</div>
+          <div class="dish-category">Rice & Biryani</div>
+          <div class="dish-desc">Fragrant fried rice tossed with BBQ chicken, mutton seekh kebab, prawns, and our signature spice blend.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 650 <span>/ plate</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drinks Category -->
+      <div class="dish-card fade-up fade-up-delay-1" data-category="drinks" data-name="Mango Lassi" data-search="lassi mango drink yogurt">
+        <div class="dish-emoji">🥤<div class="dish-tag">Refreshing</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Mango Lassi</div>
+          <div class="dish-category">Drinks</div>
+          <div class="dish-desc">Chilled yogurt-based drink blended with fresh mango, topped with dry fruits — the perfect cooling companion.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 120 <span>/ large</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-2" data-category="drinks" data-name="Fresh Lime Water" data-search="lime juice water drink fresh">
+        <div class="dish-emoji">🍋<div class="dish-tag">Classic</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Fresh Lime Water</div>
+          <div class="dish-category">Drinks</div>
+          <div class="dish-desc">Freshly squeezed lime juice with chilled water, a pinch of salt and spices — the ultimate street drink.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 80 <span>/ glass</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="drinks" data-name="Masala Chai" data-search="chai tea masala spiced hot">
+        <div class="dish-emoji">☕<div class="dish-tag">Favorite</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Masala Chai</div>
+          <div class="dish-category">Drinks</div>
+          <div class="dish-desc">Aromatic Indian spiced tea brewed with ginger, cardamom, cloves and cinnamon — served piping hot.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 50 <span>/ cup</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts Category -->
+      <div class="dish-card fade-up fade-up-delay-1" data-category="desserts" data-name="Kheer" data-search="kheer rice pudding dessert sweet">
+        <div class="dish-emoji">🍰<div class="dish-tag">Sweet Treat</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Kheer (Rice Pudding)</div>
+          <div class="dish-category">Desserts</div>
+          <div class="dish-desc">Creamy rice pudding slow-cooked with milk, condensed milk, nuts and cardamom — a classic Hyderabadi dessert.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 150 <span>/ bowl</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-2" data-category="desserts" data-name="Falooda" data-search="falooda dessert ice cream sweet">
+        <div class="dish-emoji">🍨<div class="dish-tag">Favorite</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Falooda</div>
+          <div class="dish-category">Desserts</div>
+          <div class="dish-desc">Layered dessert with vermicelli, rose syrup, ice cream and basil seeds — a cooling summer indulgence.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 200 <span>/ serving</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dish-card fade-up fade-up-delay-3" data-category="desserts" data-name="Gulab Jamun" data-search="gulab jamun donut syrup dessert">
+        <div class="dish-emoji">🍩<div class="dish-tag">Classic</div></div>
+        <div class="dish-body">
+          <div class="dish-name">Gulab Jamun</div>
+          <div class="dish-category">Desserts</div>
+          <div class="dish-desc">Soft, spongy milk balls soaked in rose-flavored sugar syrup, served warm — pure indulgence in every bite.</div>
+          <div class="dish-footer">
+            <div class="dish-price">Rs. 180 <span>/ 4 pieces</span></div>
+            <button class="dish-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="no-results" style="display: none;">
+      <div class="no-results-icon">🔍</div>
+      <div class="no-results-text">No items found. Try a different search or filter.</div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="why-bg-text">SHAMA</div>
+  <div class="container">
+    <div class="why-layout">
+      <div>
+        <span class="section-label fade-up">Why Choose Us</span>
+        <h2 class="section-title fade-up fade-up-delay-1">The <span>Shama</span><br/>Difference</h2>
+        <div class="divider fade-up fade-up-delay-1"></div>
+        <div class="why-features">
+          <div class="why-feature fade-up fade-up-delay-2">
+            <div class="why-icon">🔥</div>
+            <div>
+              <div class="why-feature-title">Live Charcoal Grilling</div>
+              <div class="why-feature-desc">Every piece is grilled fresh over real coal — never gas, never shortcuts. You can see our flame from the street.</div>
+            </div>
+          </div>
+          <div class="why-feature fade-up fade-up-delay-3">
+            <div class="why-icon">🌿</div>
+            <div>
+              <div class="why-feature-title">Fresh Daily Ingredients</div>
+              <div class="why-feature-desc">Meat sourced fresh each morning from Hyderabad's livestock market. Herbs and spices ground in-house daily.</div>
+            </div>
+          </div>
+          <div class="why-feature fade-up fade-up-delay-4">
+            <div class="why-icon">👨‍🍳</div>
+            <div>
+              <div class="why-feature-title">30 Years of Expertise</div>
+              <div class="why-feature-desc">Three decades of perfecting Sindhi BBQ recipes that have delighted families across generations in Hyderabad.</div>
+            </div>
+          </div>
+          <div class="why-feature fade-up">
+            <div class="why-icon">🛵</div>
+            <div>
+              <div class="why-feature-title">Fast Delivery Across Hyderabad</div>
+              <div class="why-feature-desc">Hot off the grill to your doorstep within 45 minutes across Hyderabad City and surrounding areas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual fade-up fade-up-delay-2">
+        <div class="why-card">
+          <div class="why-card-flame">🕯️</div>
+          <div class="why-card-title">Shama Brothers BBQ</div>
+          <div class="why-card-sub">Hyderabad's most beloved BBQ landmark — where every meal is a family memory made around the fire.</div>
+          <div class="why-card-stats">
+            <div class="why-stat">
+              <div class="why-stat-num">30+</div>
+              <div class="why-stat-label">Years Open</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-num">50K+</div>
+              <div class="why-stat-label">Customers</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-num">40+</div>
+              <div class="why-stat-label">Menu Items</div>
+            </div>
+            <div class="why-stat">
+              <div class="why-stat-num">4.9★</div>
+              <div class="why-stat-label">Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-title">Voices of <span>Our Guests</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card fade-up fade-up-delay-1">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The Seekh Kebab here is absolutely unmatched anywhere in Hyderabad. The spice blend is incredible — I've been coming here since I was a child with my father.</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div>
+            <div class="testi-name">Ahmed Khurshid</div>
+            <div class="testi-loc">Latifabad, Hyderabad</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up fade-up-delay-2">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Ordered for a family gathering of 40 people. Everything arrived hot and perfectly cooked. Shama Brothers never disappoint — the biryani with BBQ was a show stopper.</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar">FM</div>
+          <div>
+            <div class="testi-name">Fatima Mirza</div>
+            <div class="testi-loc">Qasimabad, Hyderabad</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up fade-up-delay-3">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Been traveling across Sindh for work and I always make a stop here. The live charcoal grill atmosphere at night is something else — pure Hyderabadi soul food.</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SR</div>
+          <div>
+            <div class="testi-name">Shahid Rajput</div>
+            <div class="testi-loc">Karachi (originally HYD)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Shama Brothers BBQ</div>
+        <div class="footer-brand-ur">شمع برادرز بی بی کیو</div>
+        <div class="footer-desc">Hyderabad, Sindh's legendary open-fire BBQ restaurant since 1995. Three generations of flame-kissed flavors, served with love.</div>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" title="Facebook">f</a>
+          <a class="social-btn" href="#" title="Instagram">📷</a>
+          <a class="social-btn" href="#" title="WhatsApp">💬</a>
+          <a class="social-btn" href="#" title="TikTok">▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#home">→ Home</a>
+          <a href="#featured">→ Our Menu</a>
+          <a href="#why">→ About Us</a>
+          <a href="#testimonials">→ Reviews</a>
+          <a href="#footer">→ Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Menu</div>
+        <div class="footer-links">
+          <a href="#">→ BBQ Platters</a>
+          <a href="#">→ Kebabs</a>
+          <a href="#">→ Biryani</a>
+          <a href="#">→ Seafood BBQ</a>
+          <a href="#">→ Drinks & Desserts</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact Us</div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📍</span>
+          <span>Main BBQ Street, Saddar Bazaar, Hyderabad, Sindh 71000</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">📞</span>
+          <span>+92 22 123 4567<br/>+92 300 123 4567</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">🕐</span>
+          <span>Open Daily<br/>5:00 PM – 2:00 AM</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© <span id="year">2024</span> <span>Shama Brothers BBQ</span>. All rights reserved. Hyderabad, Sindh.</div>
+      <div class="footer-badge">Built with 🔥 for Hyderabad</div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top" title="Back to top">↑</button>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
