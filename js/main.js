@@ -157,4 +157,132 @@
       filterMenu();
     });
   });
+
+  // Contact Form Validation
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const contactName = document.getElementById('contactName');
+    const contactEmail = document.getElementById('contactEmail');
+    const contactSubject = document.getElementById('contactSubject');
+    const contactMessage = document.getElementById('contactMessage');
+    const formSuccessMessage = document.getElementById('formSuccessMessage');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+    
+    const successName = document.getElementById('successName');
+    const successEmail = document.getElementById('successEmail');
+
+    // Helper functions for validation
+    const showError = (input, errorElId, msg) => {
+      input.classList.add('error');
+      input.classList.remove('valid');
+      const errorEl = document.getElementById(errorElId);
+      if (errorEl) {
+        errorEl.textContent = msg;
+        errorEl.classList.add('visible');
+      }
+    };
+
+    const showValid = (input, errorElId) => {
+      input.classList.remove('error');
+      input.classList.add('valid');
+      const errorEl = document.getElementById(errorElId);
+      if (errorEl) {
+        errorEl.classList.remove('visible');
+      }
+    };
+
+    const validateEmail = (email) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const validateField = (input, errorElId, errorMsg) => {
+      if (!input.value.trim()) {
+        showError(input, errorElId, errorMsg);
+        return false;
+      }
+      showValid(input, errorElId);
+      return true;
+    };
+
+    const validateForm = () => {
+      let isValid = true;
+
+      // Validate Name
+      if (!validateField(contactName, 'nameError', 'Full Name is required')) {
+        isValid = false;
+      }
+
+      // Validate Email
+      const emailValue = contactEmail.value.trim();
+      if (!emailValue) {
+        showError(contactEmail, 'emailError', 'Email address is required');
+        isValid = false;
+      } else if (!validateEmail(emailValue)) {
+        showError(contactEmail, 'emailError', 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        showValid(contactEmail, 'emailError');
+      }
+
+      // Validate Subject
+      if (!validateField(contactSubject, 'subjectError', 'Subject is required')) {
+        isValid = false;
+      }
+
+      // Validate Message
+      if (!validateField(contactMessage, 'messageError', 'Message is required')) {
+        isValid = false;
+      }
+
+      return isValid;
+    };
+
+    // Live validation on input
+    contactName.addEventListener('input', () => validateField(contactName, 'nameError', 'Full Name is required'));
+    contactEmail.addEventListener('input', () => {
+      const emailValue = contactEmail.value.trim();
+      if (!emailValue) {
+        showError(contactEmail, 'emailError', 'Email address is required');
+      } else if (!validateEmail(emailValue)) {
+        showError(contactEmail, 'emailError', 'Please enter a valid email address');
+      } else {
+        showValid(contactEmail, 'emailError');
+      }
+    });
+    contactSubject.addEventListener('input', () => validateField(contactSubject, 'subjectError', 'Subject is required'));
+    contactMessage.addEventListener('input', () => validateField(contactMessage, 'messageError', 'Message is required'));
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      if (validateForm()) {
+        // Form is valid! Set success elements
+        if (successName) successName.textContent = contactName.value.trim();
+        if (successEmail) successEmail.textContent = contactEmail.value.trim();
+        
+        // Show success animation/container
+        contactForm.classList.add('form-hidden');
+        if (formSuccessMessage) {
+          formSuccessMessage.classList.add('visible');
+        }
+      }
+    });
+
+    if (resetFormBtn) {
+      resetFormBtn.addEventListener('click', () => {
+        contactForm.reset();
+        
+        // Clear classes
+        [contactName, contactEmail, contactSubject, contactMessage].forEach(input => {
+          input.classList.remove('valid', 'error');
+        });
+        
+        // Hide success message, show form
+        contactForm.classList.remove('form-hidden');
+        if (formSuccessMessage) {
+          formSuccessMessage.classList.remove('visible');
+        }
+      });
+    }
+  }
 })();
