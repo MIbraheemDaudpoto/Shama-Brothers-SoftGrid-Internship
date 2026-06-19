@@ -1,37 +1,58 @@
 // Main interactive behaviors: sticky nav, mobile toggle, particles, scroll animations
 (function(){
+  // ── LOADING SCREEN ─────────────────────────────────────────
+  const loadingScreen = document.getElementById('loadingScreen');
+  window.addEventListener('load', () => {
+    if (loadingScreen) {
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+      }, 800);
+    }
+  });
+
+  // ── STICKY NAVBAR ──────────────────────────────────────────
   const navbar = document.getElementById('navbar');
   const scrollBtn = document.getElementById('scroll-top');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
       navbar.classList.add('scrolled');
-      scrollBtn.classList.add('visible');
+      if (scrollBtn) scrollBtn.classList.add('visible');
     } else {
       navbar.classList.remove('scrolled');
-      scrollBtn.classList.remove('visible');
+      if (scrollBtn) scrollBtn.classList.remove('visible');
     }
   });
-  if (scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
+  // ── MOBILE NAVIGATION ──────────────────────────────────────
   const ham = document.getElementById('hamburger');
   const mobileNav = document.getElementById('nav-mobile');
+  
   if (ham && mobileNav) {
     ham.addEventListener('click', () => {
       ham.classList.toggle('open');
       mobileNav.classList.toggle('open');
     });
+    
     mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       ham.classList.remove('open');
       mobileNav.classList.remove('open');
     }));
   }
 
+  // ── SCROLL ANIMATIONS ──────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    entries.forEach(e => { 
+      if (e.isIntersecting) e.target.classList.add('visible'); 
+    });
   }, { threshold: 0.12 });
+  
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // particles
+  // ── PARTICLES EFFECT ───────────────────────────────────────
   const container = document.getElementById('particles');
   if (container) {
     const colors = ['#c0392b','#e74c3c','#f39c12','#e67e22','#ff6b35'];
@@ -51,11 +72,11 @@
     }
   }
 
-  // set current year in footer
+  // Set current year in footer
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Menu Search and Filter Functionality
+  // ── MENU SEARCH AND FILTER ────────────────────────────────
   const menuSearch = document.getElementById('menuSearch');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const dishCards = document.querySelectorAll('.dish-card');
@@ -68,7 +89,7 @@
     
     dishCards.forEach(card => {
       const cardCategory = card.getAttribute('data-category');
-      const searchText = menuSearch.value.toLowerCase();
+      const searchText = menuSearch ? menuSearch.value.toLowerCase() : '';
       const cardName = card.getAttribute('data-name').toLowerCase();
       const cardSearchTerms = card.getAttribute('data-search').toLowerCase();
 
@@ -87,14 +108,16 @@
     });
 
     // Show/hide no results message
-    if (visibleCount === 0) {
-      noResults.style.display = 'block';
-    } else {
-      noResults.style.display = 'none';
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
     }
 
     // Hide search results dropdown when menu is filtered
-    searchResults.classList.remove('show');
+    if (searchResults) searchResults.classList.remove('show');
   }
 
   // Search functionality with live preview
@@ -112,17 +135,17 @@
           }
         });
 
-        if (matches.length > 0) {
+        if (matches.length > 0 && searchResults) {
           searchResults.innerHTML = matches
             .slice(0, 5)
             .map(match => `<div class="search-result-item">${match}</div>`)
             .join('');
           searchResults.classList.add('show');
-        } else {
+        } else if (searchResults) {
           searchResults.innerHTML = '<div class="search-result-item">No items found</div>';
           searchResults.classList.add('show');
         }
-      } else {
+      } else if (searchResults) {
         searchResults.classList.remove('show');
       }
 
@@ -131,7 +154,7 @@
 
     // Close search results when clicking outside
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.menu-search-wrapper')) {
+      if (searchResults && !e.target.closest('.menu-search-wrapper')) {
         searchResults.classList.remove('show');
       }
     });
@@ -150,7 +173,7 @@
       // Clear search and hide search results
       if (menuSearch) {
         menuSearch.value = '';
-        searchResults.classList.remove('show');
+        if (searchResults) searchResults.classList.remove('show');
       }
       
       // Apply filter
@@ -158,7 +181,7 @@
     });
   });
 
-  // Contact Form Validation
+  // ── CONTACT FORM VALIDATION ───────────────────────────────
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     const contactName = document.getElementById('contactName');
